@@ -853,6 +853,46 @@ export function AdminPanel({
             </div>
           </div>
 
+          {/* Method 4: GitHub Actions (Automated CI/CD) */}
+          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center font-mono">GH</span>
+                <h3 className="text-sm font-bold text-white">4-cü Üsul: GitHub və GitHub Actions (Tam Avtomatik Deploy)</h3>
+              </div>
+              <span className="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                CI/CD
+              </span>
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Hər dəfə GitHub-a kod göndərdikdə (<code className="text-amber-400 font-mono">git push</code>), GitHub Actions avtomatik olaraq saytı build edir və FTP ilə birbaşa <strong className="text-white">save.az/car</strong> qovluğuna yükləyir!
+            </p>
+
+            <div className="space-y-2">
+              <span className="text-[11px] font-semibold text-slate-300 block">1. GitHub Repozitoriyasında Secrets əlavə edin:</span>
+              <p className="text-[11px] text-slate-400">
+                GitHub-da layihənizə daxil olub <strong>Settings &rarr; Secrets and variables &rarr; Actions &rarr; New repository secret</strong> bölməsindən bu 3 məlumatı daxil edin:
+              </p>
+              <ul className="text-xs font-mono text-amber-300 space-y-1 pl-3 list-disc">
+                <li>FTP_SERVER : save.az (və ya hosting FTP ünvanınız)</li>
+                <li>FTP_USERNAME : hosting FTP istifadəçi adınız</li>
+                <li>FTP_PASSWORD : hosting FTP şifrəniz</li>
+              </ul>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              <span className="text-[11px] font-semibold text-slate-300 block">2. PowerShell-dən GitHub-a göndərin:</span>
+              <pre className="p-2.5 rounded-lg bg-slate-950 font-mono text-[11px] text-purple-300 overflow-x-auto border border-slate-800">
+git add .
+git commit -m "Avto Park Karti yeniləndi"
+git push origin main
+              </pre>
+              <p className="text-[10px] text-slate-400">
+                GitHub 30 saniyə içində saytınızı avtomatik build edib <strong className="text-emerald-400">save.az/car</strong> qovluğunuza yükləyəcək!
+              </p>
+            </div>
+          </div>
+
           {/* WordPress / CMS Isolation Note */}
           <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-slate-300 space-y-1.5">
             <div className="font-bold text-amber-400 flex items-center gap-1.5">
