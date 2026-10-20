@@ -1,0 +1,4 @@
+# Apache / LiteSpeed serverlərdə əsas saytın yönləndirməsini dayandırmaq üçün
+RewriteEngine Off
+Options -MultiViews
+DirectoryIndex index.html

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import plateImgUrl from '../assets/plate_900.png';
 
 interface AzerbaijanLicensePlateProps {
   plateNumber?: string;
@@ -6,7 +7,7 @@ interface AzerbaijanLicensePlateProps {
   className?: string;
 }
 
-export const OFFICIAL_PLATE_IMAGE_PATH = '/assets/aistudio/900_d9d38ea094f79fbee32d_71b5de54.png';
+export const OFFICIAL_PLATE_IMAGE_PATH = plateImgUrl;
 
 export function AzerbaijanLicensePlate({ 
   plateNumber = '10 VX 900', 

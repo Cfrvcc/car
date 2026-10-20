@@ -869,9 +869,18 @@ export function AdminPanel({
             </p>
 
             <div className="space-y-2">
-              <span className="text-[11px] font-semibold text-slate-300 block">1. GitHub Repozitoriyasında Secrets əlavə edin:</span>
+              <span className="text-[11px] font-semibold text-slate-300 block">1. Cfrvcc/car Repozitoriyasında Secrets əlavə edin:</span>
               <p className="text-[11px] text-slate-400">
-                GitHub-da layihənizə daxil olub <strong>Settings &rarr; Secrets and variables &rarr; Actions &rarr; New repository secret</strong> bölməsindən bu 3 məlumatı daxil edin:
+                Birbaşa bu linkə keçid edin:{' '}
+                <a
+                  href="https://github.com/Cfrvcc/car/settings/secrets/actions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-400 underline font-mono text-xs"
+                >
+                  github.com/Cfrvcc/car/settings/secrets/actions
+                </a>{' '}
+                və <strong>New repository secret</strong> düyməsinə basıb bu 3 məlumatı daxil edin:
               </p>
               <ul className="text-xs font-mono text-amber-300 space-y-1 pl-3 list-disc">
                 <li>FTP_SERVER : save.az (və ya hosting FTP ünvanınız)</li>
@@ -881,14 +890,17 @@ export function AdminPanel({
             </div>
 
             <div className="space-y-2 pt-1">
-              <span className="text-[11px] font-semibold text-slate-300 block">2. PowerShell-dən GitHub-a göndərin:</span>
+              <span className="text-[11px] font-semibold text-slate-300 block">2. PowerShell-də layihəni Cfrvcc/car repozitoriyasına göndərin:</span>
               <pre className="p-2.5 rounded-lg bg-slate-950 font-mono text-[11px] text-purple-300 overflow-x-auto border border-slate-800">
+git init
+git remote add origin https://github.com/Cfrvcc/car.git
 git add .
-git commit -m "Avto Park Karti yeniləndi"
-git push origin main
+git commit -m "10 VX 900 Avto Park Karti"
+git branch -M main
+git push -u origin main
               </pre>
               <p className="text-[10px] text-slate-400">
-                GitHub 30 saniyə içində saytınızı avtomatik build edib <strong className="text-emerald-400">save.az/car</strong> qovluğunuza yükləyəcək!
+                Push edən kimi GitHub Actions avtomatik işə düşəcək və saytı birbaşa <strong className="text-emerald-400 font-mono">save.az/car</strong> qovluğunuza yükləyəcək!
               </p>
             </div>
           </div>
