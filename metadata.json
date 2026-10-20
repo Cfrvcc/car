@@ -1,0 +1,6 @@
+{
+  "name": "Avto Park Kartı — Sürücü ilə Əlaqə",
+  "description": "Avtomobilin ön şüşəsi üçün smart QR park kartı. Parklanma zamanı sürücü ilə dərhal zəng, WhatsApp, Telegram, Instagram və TikTok vasitəsilə əlaqə saxlayın.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
