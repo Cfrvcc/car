@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, MessageSquare, Send } from 'lucide-react';
+import { Phone, MessageSquare, Send, Settings, Car } from 'lucide-react';
 import { ContactCard } from './components/ContactCard';
 import { AdminPanel } from './components/AdminPanel';
 import { AdminAuthModal } from './components/AdminAuthModal';
@@ -57,9 +57,49 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-carbon-pattern text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen bg-black text-white flex flex-col selection:bg-white selection:text-black">
+      {/* Apple Minimalist Top Bar */}
+      <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-2xl border-b border-white/[0.08] no-print">
+        <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between gap-3">
+          {/* Brand & Plate */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-xl bg-white/[0.08] flex items-center justify-center text-white">
+              <Car className="w-3.5 h-3.5" />
+            </div>
+            <div>
+              <span className="font-display font-extrabold text-sm text-white tracking-tight block leading-tight">
+                {profile.carPlate}
+              </span>
+              <span className="text-[10px] text-white/50 block font-normal">
+                {profile.name}
+              </span>
+            </div>
+          </div>
+
+          {/* Quick Header Action */}
+          <div className="flex items-center gap-2">
+            <a
+              href={`tel:${profile.phone}`}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white hover:bg-neutral-200 text-black text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-sm"
+            >
+              <Phone className="w-3 h-3 fill-black text-black" />
+              <span>Zəng Et</span>
+            </a>
+
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer"
+              title="İdarəetmə Paneli"
+              aria-label="İdarəetmə Paneli"
+            >
+              <Settings className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </header>
+
       {/* Main Content Area */}
-      <main id="contact" className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+      <main id="contact" className="flex-1 w-full max-w-lg mx-auto px-4 py-6 sm:py-8">
         {isAdmin ? (
           <AdminPanel
             profile={profile}
@@ -76,29 +116,29 @@ export default function App() {
         )}
       </main>
 
-      {/* Mobile Sticky Action Bar for Visitors (Only shown on mobile when not in admin) */}
+      {/* Mobile Sticky Apple Action Bar */}
       {!isAdmin && (
-        <div className="fixed bottom-0 left-0 right-0 z-30 p-3 bg-slate-950/95 backdrop-blur-md border-t border-slate-800/80 sm:hidden no-print">
-          <div className="flex items-center gap-2">
+        <div className="fixed bottom-0 left-0 right-0 z-30 p-3 bg-black/85 backdrop-blur-2xl border-t border-white/10 sm:hidden no-print">
+          <div className="flex items-center gap-2 max-w-lg mx-auto">
             <a
               href={`tel:${profile.phone}`}
-              className="flex-1 min-h-[46px] rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-all shadow-md"
+              className="flex-1 min-h-[48px] rounded-2xl bg-white hover:bg-neutral-200 text-black font-extrabold text-xs flex items-center justify-center gap-2 active:scale-95 transition-all shadow-md"
             >
-              <Phone className="w-4 h-4 fill-current" />
-              <span>Dərhal Zəng Et</span>
+              <Phone className="w-4 h-4 fill-black text-black" />
+              <span>Zəng Et</span>
             </a>
             <a
               href={generateWhatsAppLink(profile.phone)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 min-h-[46px] rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+              className="flex-1 min-h-[48px] rounded-2xl bg-white/[0.08] hover:bg-white/[0.14] text-white border border-white/[0.1] font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all"
             >
-              <MessageSquare className="w-4 h-4 fill-current" />
+              <MessageSquare className="w-4 h-4 fill-white" />
               <span>WhatsApp</span>
             </a>
             <a
               href={generateSmsLink(profile.phone)}
-              className="min-h-[46px] px-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all"
+              className="min-h-[48px] px-3.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.14] text-white border border-white/[0.1] font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all"
               title="SMS"
             >
               <Send className="w-3.5 h-3.5" />
@@ -108,29 +148,21 @@ export default function App() {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="mt-auto py-6 border-t border-slate-800/80 text-center no-print pb-24 sm:pb-6">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+      {/* Apple Minimalist Footer */}
+      <footer className="mt-auto py-6 border-t border-white/[0.06] text-center no-print pb-24 sm:pb-6">
+        <div className="max-w-lg mx-auto px-4 flex flex-col items-center justify-center gap-2 text-xs text-white/40">
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => setIsAuthModalOpen(true)}
-              className="font-semibold text-slate-300 hover:text-white transition-colors cursor-pointer text-left focus:outline-none"
-              title=""
-            >
-              {profile.name}
-            </button>
+            <span className="font-semibold text-white/70">{profile.name}</span>
             <span aria-hidden="true">·</span>
-            <span className="font-mono text-amber-400 font-bold">{profile.carPlate}</span>
-            <span aria-hidden="true">·</span>
-            <span className="font-mono text-slate-400">{profile.displayPhone}</span>
+            <span className="font-mono text-white/60 font-medium">{profile.carPlate}</span>
           </div>
 
-          <div className="flex items-center gap-4 text-slate-400">
+          <div className="flex items-center gap-4 text-xs text-white/40">
             <a
               href={`https://t.me/${profile.telegram}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors"
+              className="hover:text-white transition-colors"
             >
               Telegram
             </a>
@@ -139,7 +171,7 @@ export default function App() {
               href={`https://instagram.com/${profile.instagram}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors"
+              className="hover:text-white transition-colors"
             >
               Instagram
             </a>
@@ -148,7 +180,7 @@ export default function App() {
               href={`https://tiktok.com/@${profile.tiktok}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors"
+              className="hover:text-white transition-colors"
             >
               TikTok
             </a>
